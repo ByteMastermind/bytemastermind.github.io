@@ -15,3 +15,7 @@ A complete guide how to create your own Arduino game. Coming soon
 ---
 
 Coming soon
+
+
+<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="imichalbenes" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://cz.linkedin.com/in/imichalbenes?trk=profile-badge">Michal Beneš</a></div>
+              
