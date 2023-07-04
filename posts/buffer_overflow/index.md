@@ -54,9 +54,9 @@ Disable by overwriting the following value:
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
 
-- Originally the value ```2```
+Originally the value ```2```
 
-- After restarting the PC, the value is restored
+After restarting the PC, the value is restored
 
 ## 1. Analyzing the binary, the stack, coming up with a strategy
 
