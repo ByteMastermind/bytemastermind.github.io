@@ -2,7 +2,7 @@
 
 ## My Articles
 
-> ### [What is buffer overflow and how it can be exploited?](./articles/buffer_overflow/index.md)
+> ### [What is buffer overflow and how it can be exploited?](./posts/buffer_overflow/index.md)
 >
 > An article about the problem of buffer overflow, what damage can it do and why we should write code that is safe. Coming soon
 
