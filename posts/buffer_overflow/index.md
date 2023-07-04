@@ -318,7 +318,7 @@ gcc -Wall -pedantic exploit_factory.c -o exploit_factory.out
 This, when run, creates the malicious input and saves it in the **input.bin** file (also an attached file)
 
 I check in the EDB debugger that the instructions actually worked as I intended:
-``shell
+```shell
 edb --run ./main_bigger.out $(./exploit_factory.out > info.log; cat input.bin)
 ```
 
