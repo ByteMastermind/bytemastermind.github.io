@@ -14,6 +14,11 @@
 >
 > A complete guide how to create your own Arduino game. Coming soon
 
+
+> ### [AIB Preparation](./posts/aib/index.md)
+>
+> Preparation for AIB exam on FIT CTU.
+
 ---
 
 Coming soon
