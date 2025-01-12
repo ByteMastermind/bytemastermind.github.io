@@ -1,37 +1,38 @@
 	# Exam AIB
 ### Table of Contents
-- [[#Algoritmy Generování Klíčů|Algoritmy Generování Klíčů]]
-	- [[#Algoritmy Generování Klíčů#Definujte Golombovy pseudonáhodné postuláty|Definujte Golombovy pseudonáhodné postuláty]]
-- [[#Samoopravné kódy|Samoopravné kódy]]
-	- [[#Samoopravné kódy#Definujte nasledujici pojmy:|Definujte nasledujici pojmy:]]
-	- [[#Samoopravné kódy#Definice: samoortogonální kód, samoduální kód, generující a kontrolní matice a vztah mezi nimi (nápověda: vztah souvisí s ortogonalitou)|Definice: samoortogonální kód, samoduální kód, generující a kontrolní matice a vztah mezi nimi (nápověda: vztah souvisí s ortogonalitou)]]
-	- [[#Samoopravné kódy#Definujte generující a kontrolní matici. (5 bodů)|Definujte generující a kontrolní matici. (5 bodů)]]
-	- [[#Samoopravné kódy#Definujte Reed-Mullerův kód a jeho parametry.|Definujte Reed-Mullerův kód a jeho parametry.]]
-	- [[#Samoopravné kódy#Definujte cyklický kód, proč je to hlavní ideál?|Definujte cyklický kód, proč je to hlavní ideál?]]
-	- [[#Samoopravné kódy#Definujte Reed-Solomonův kód a jeho generující a kontrolní matice|Definujte Reed-Solomonův kód a jeho generující a kontrolní matice]]
-	- [[#Samoopravné kódy#Popište Singletonův odhad. (5 bodů)|Popište Singletonův odhad. (5 bodů)]]
-	- [[#Samoopravné kódy#BCH kód pro q < 2, ta těžší definice|BCH kód pro q < 2, ta těžší definice]]
-	- [[#Samoopravné kódy#Definujte (m,l,t,epsilon)-fuzzy extraktor.|Definujte (m,l,t,epsilon)-fuzzy extraktor.]]
-	- [[#Samoopravné kódy#Definujte konstrukci bezpecneho nacrtu pro Hammingovu vzdalenost|Definujte konstrukci bezpecneho nacrtu pro Hammingovu vzdalenost]]
-- [[#Kryptografické protokoly|Kryptografické protokoly]]
-	- [[#Kryptografické protokoly#Popište Guillou-Quisquaterův identifikační protokol|Popište Guillou-Quisquaterův identifikační protokol]]
-	- [[#Kryptografické protokoly#Popiste Schnorruv identifikacni protokol|Popiste Schnorruv identifikacni protokol]]
-	- [[#Kryptografické protokoly#Napiste vetu a dokazte Lagrangeovu interpolaci.|Napiste vetu a dokazte Lagrangeovu interpolaci.]]
-	- [[#Kryptografické protokoly#Popište algoritmus Authenticated Key Exchange Protocol 2 (AKEP2) (10 bodů)|Popište algoritmus Authenticated Key Exchange Protocol 2 (AKEP2) (10 bodů)]]
-	- [[#Kryptografické protokoly#Kerberos (zjednodušená verze).|Kerberos (zjednodušená verze).]]
-	- [[#Kryptografické protokoly#Popište Otway-Reesův protokol. (10 bodů)|Popište Otway-Reesův protokol. (10 bodů)]]
-- [[#Detekce Malware|Detekce Malware]]
-	- [[#Detekce Malware#Popište alespoň 5 typů dat (příznaků) pro analýzu malwaru.|Popište alespoň 5 typů dat (příznaků) pro analýzu malwaru.]]
-	- [[#Detekce Malware#Popište algoritmus branch and bound pro výběr parametrů. (10 bodů)|Popište algoritmus branch and bound pro výběr parametrů. (10 bodů)]]
-	- [[#Detekce Malware#Naivní Bayes + odvození vzorce z Bayesovy věty.|Naivní Bayes + odvození vzorce z Bayesovy věty.]]
-	- [[#Detekce Malware#Napiste pseudokod algoritmu PAM|Napiste pseudokod algoritmu PAM]]
-	- [[#Detekce Malware#Vysvětlete problém přeučení a problém nevyvážených dat. (5 bodů)|Vysvětlete problém přeučení a problém nevyvážených dat. (5 bodů)]]
-		- [[#Vysvětlete problém přeučení a problém nevyvážených dat. (5 bodů)#Problém přeučení (Overfitting)|Problém přeučení (Overfitting)]]
-		- [[#Vysvětlete problém přeučení a problém nevyvážených dat. (5 bodů)#Problém nevyvážených dat (Unbalanced Data)|Problém nevyvážených dat (Unbalanced Data)]]
-	- [[#Detekce Malware#Popište následující problémy z oblasti detekce malware: minimalizace reakční doby, interpretovatelnost modelů strojového učení a generování adversariálních vzorků. (5 bodů)|Popište následující problémy z oblasti detekce malware: minimalizace reakční doby, interpretovatelnost modelů strojového učení a generování adversariálních vzorků. (5 bodů)]]
-- [[#Steganografie|Steganografie]]
-	- [[#Steganografie#Steganografie, odvoďte vzoreček pro E\[hα\[2k\]\] (10 bodů) & Definujte LSB vkládání a napište výpočet pravděpodobnosti, že se pixel nezmění v závislosti na relativním užitečném zatížení α.|Steganografie, odvoďte vzoreček pro E\[hα\[2k\]\] (10 bodů) & Definujte LSB vkládání a napište výpočet pravděpodobnosti, že se pixel nezmění v závislosti na relativním užitečném zatížení α.]]
-	- [[#Steganografie#Definujte histogramový útok na steganografický záznam. (10 bodů)|Definujte histogramový útok na steganografický záznam. (10 bodů)]]
+
+- [Algoritmy Generování Klíčů](#algoritmy-generov%C3%A1n%C3%AD-kl%C3%AD%C4%8D%C5%AF)
+	- [Definujte Golombovy pseudonáhodné postuláty](#definujte-golombovy-pseudon%C3%A1hodn%C3%A9-postul%C3%A1ty)
+- [Samoopravné kódy](#samoopravn%C3%A9-k%C3%B3dy)
+	- [Definujte nasledujici pojmy:](#definujte-nasledujici-pojmy)
+	- [Definice: samoortogonální kód, samoduální kód, generující a kontrolní matice a vztah mezi nimi (nápověda: vztah souvisí s ortogonalitou)](#definice-samoortogon%C3%A1ln%C3%AD-k%C3%B3d-samodu%C3%A1ln%C3%AD-k%C3%B3d-generuj%C3%ADc%C3%AD-a-kontroln%C3%AD-matice-a-vztah-mezi-nimi-n%C3%A1pov%C4%9Bda-vztah-souvis%C3%AD-s-ortogonalitou)
+	- [Definujte generující a kontrolní matici. (5 bodů)](#definujte-generuj%C3%ADc%C3%AD-a-kontroln%C3%AD-matici-5-bod%C5%AF)
+	- [Definujte Reed-Mullerův kód a jeho parametry.](#definujte-reed-muller%C5%AFv-k%C3%B3d-a-jeho-parametry)
+	- [Definujte cyklický kód, proč je to hlavní ideál?](#definujte-cyklick%C3%BD-k%C3%B3d-pro%C4%8D-je-to-hlavn%C3%AD-ide%C3%A1l)
+	- [Definujte Reed-Solomonův kód a jeho generující a kontrolní matice](#definujte-reed-solomon%C5%AFv-k%C3%B3d-a-jeho-generuj%C3%ADc%C3%AD-a-kontroln%C3%AD-matice)
+	- [Popište Singletonův odhad. (5 bodů)](#popi%C5%A1te-singleton%C5%AFv-odhad-5-bod%C5%AF)
+	- [BCH kód pro q < 2, ta těžší definice](#bch-k%C3%B3d-pro-q--2-ta-t%C4%9B%C5%BE%C5%A1%C3%AD-definice)
+	- [Definujte (m,l,t,epsilon)-fuzzy extraktor.](#definujte-mltepsilon-fuzzy-extraktor)
+	- [Definujte konstrukci bezpecneho nacrtu pro Hammingovu vzdalenost](#definujte-konstrukci-bezpecneho-nacrtu-pro-hammingovu-vzdalenost)
+- [Kryptografické protokoly](#kryptografick%C3%A9-protokoly)
+	- [Popište Guillou-Quisquaterův identifikační protokol](#popi%C5%A1te-guillou-quisquater%C5%AFv-identifika%C4%8Dn%C3%AD-protokol)
+	- [Popiste Schnorruv identifikacni protokol](#popiste-schnorruv-identifikacni-protokol)
+	- [Napiste vetu a dokazte Lagrangeovu interpolaci.](#napiste-vetu-a-dokazte-lagrangeovu-interpolaci)
+	- [Popište algoritmus Authenticated Key Exchange Protocol 2 (AKEP2) (10 bodů)](#popi%C5%A1te-algoritmus-authenticated-key-exchange-protocol-2-akep2-10-bod%C5%AF)
+	- [Kerberos (zjednodušená verze).](#kerberos-zjednodu%C5%A1en%C3%A1-verze)
+	- [Popište Otway-Reesův protokol. (10 bodů)](#popi%C5%A1te-otway-rees%C5%AFv-protokol-10-bod%C5%AF)
+- [Detekce Malware](#detekce-malware)
+	- [Popište alespoň 5 typů dat (příznaků) pro analýzu malwaru.](#popi%C5%A1te-alespo%C5%88-5-typ%C5%AF-dat-p%C5%99%C3%ADznak%C5%AF-pro-anal%C3%BDzu-malwaru)
+	- [Popište algoritmus branch and bound pro výběr parametrů. (10 bodů)](#popi%C5%A1te-algoritmus-branch-and-bound-pro-v%C3%BDb%C4%9Br-parametr%C5%AF-10-bod%C5%AF)
+	- [Naivní Bayes + odvození vzorce z Bayesovy věty.](#naivn%C3%AD-bayes--odvozen%C3%AD-vzorce-z-bayesovy-v%C4%9Bty)
+	- [Napiste pseudokod algoritmu PAM](#napiste-pseudokod-algoritmu-pam)
+	- [Vysvětlete problém přeučení a problém nevyvážených dat. (5 bodů)](#vysv%C4%9Btlete-probl%C3%A9m-p%C5%99eu%C4%8Den%C3%AD-a-probl%C3%A9m-nevyv%C3%A1%C5%BEen%C3%BDch-dat-5-bod%C5%AF)
+		- [Problém přeučení (Overfitting)](#probl%C3%A9m-p%C5%99eu%C4%8Den%C3%AD-overfitting)
+		- [Problém nevyvážených dat (Unbalanced Data)](#probl%C3%A9m-nevyv%C3%A1%C5%BEen%C3%BDch-dat-unbalanced-data)
+	- [Popište následující problémy z oblasti detekce malware: minimalizace reakční doby, interpretovatelnost modelů strojového učení a generování adversariálních vzorků. (5 bodů)](#popi%C5%A1te-n%C3%A1sleduj%C3%ADc%C3%AD-probl%C3%A9my-z-oblasti-detekce-malware-minimalizace-reak%C4%8Dn%C3%AD-doby-interpretovatelnost-model%C5%AF-strojov%C3%A9ho-u%C4%8Den%C3%AD-a-generov%C3%A1n%C3%AD-adversari%C3%A1ln%C3%ADch-vzork%C5%AF-5-bod%C5%AF)
+- [Steganografie](#steganografie)
+	- [Steganografie, odvoďte vzoreček pro E\[hα\[2k\]\] (10 bodů) & Definujte LSB vkládání a napište výpočet pravděpodobnosti, že se pixel nezmění v závislosti na relativním užitečném zatížení α.](#steganografie-odvo%C4%8Fte-vzore%C4%8Dek-pro-e%5Ch%CE%B1%5C2k%5C%5C-10-bod%C5%AF--definujte-lsb-vkl%C3%A1d%C3%A1n%C3%AD-a-napi%C5%A1te-v%C3%BDpo%C4%8Det-pravd%C4%9Bpodobnosti-%C5%BEe-se-pixel-nezm%C4%9Bn%C3%AD-v-z%C3%A1vislosti-na-relativn%C3%ADm-u%C5%BEite%C4%8Dn%C3%A9m-zat%C3%AD%C5%BEen%C3%AD-%CE%B1)
+	- [Definujte histogramový útok na steganografický záznam. (10 bodů)](#definujte-histogramov%C3%BD-%C3%BAtok-na-steganografick%C3%BD-z%C3%A1znam-10-bod%C5%AF)
 
 ---
 ### Algoritmy Generování Klíčů
