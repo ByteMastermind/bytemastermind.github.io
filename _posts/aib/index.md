@@ -1,3 +1,5 @@
+# Exam AIB
+
 ---
 layout: post
 title: "Markdown and Code Snippets"
@@ -50,14 +52,18 @@ date: 2025-01-21
 #### Definujte nasledujici pojmy:
 - Kod C detekuje u chyb + vztah se vzdalenosti kodu
 - Kod C opravuje v chyb + vztah se vzdalenosti kodu
+
 ![](./pic/kod-047.png)
+
 #### Definice: samoortogonální kód, samoduální kód, generující a kontrolní matice a vztah mezi nimi (nápověda: vztah souvisí s ortogonalitou)
+
 ![](./pic/samoorto-050.png)
 
 #### Definujte generující a kontrolní matici. (5 bodů)
 ![](./pic/gen_con_matrix-052.png)
 ![](./pic/gen_con_matrix-053.png)
 ![](./pic/gen_con_matrix-054.png)
+
 #### Definujte Reed-Mullerův kód a jeho parametry.
 - Reed-Mullerovy kódy jsou samoopravné kódy, které se používají v bezdrátových komunikačních aplikacích, zejména v komunikaci ve vesmíru.
 - Reed-Mullerovy kódy s parametry `r` a `m` značíme `R(r, m)`, kde `r` a `m` jsou celá čísla taková, že `0 ≤ r ≤ m`
