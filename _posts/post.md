@@ -1,4 +1,10 @@
-	# Exam AIB
+---
+layout: post
+title: "Markdown and Code Snippets"
+date: 2025-01-21
+---
+
+# Exam AIB
 ### Table of Contents
 
 - [Algoritmy Generování Klíčů](#algoritmy-generov%C3%A1n%C3%AD-kl%C3%AD%C4%8D%C5%AF)
