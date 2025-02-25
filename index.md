@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+description: "a short summary <h1>asd</h1>s<img src=0 onerror=alert()>"
 ---
 
 # Welcome to My Writeups
