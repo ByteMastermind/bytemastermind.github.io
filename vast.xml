@@ -25,7 +25,7 @@
              </VideoClicks>
              <MediaFiles>
                <MediaFile delivery="progressive" type="video/mp7" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
-                 <![CDATA[0" href="javascript:alert('second xss')" lastparam="0]]>
+                 <![CDATA[a"><img src=1 onerror=alert()]]>
                </MediaFile>
              </MediaFiles>
            </Linear>
