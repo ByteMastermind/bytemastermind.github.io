@@ -1,7 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE VAST [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
 <VAST version="3.0">
   <Ad id="123456">
     <InLine>
-      <AdSystem version="1.0">AdServer&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
+      <AdSystem version="1.0">AdServer&xxe;&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
       <AdTitle>Ukázková reklama</AdTitle>
       <Description>Toto je ukázková VAST reklama.</Description>
       <Impression><![CDATA[http://www.example.com/impression]]></Impression>
