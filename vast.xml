@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE VAST [
   <!ENTITY xxe SYSTEM "file:///etc/passwd">
 ]>
-<VAST version="3.0">
+<VAST version="&xxe;">
   <Ad id="123456">
     <InLine>
       <AdSystem version="1.0">AdServer01&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
