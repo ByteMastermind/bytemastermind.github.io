@@ -1,0 +1,32 @@
+<VAST version="3.0">
+  <Ad id="123456">
+    <InLine>
+      <AdSystem version="1.0">AdServerExample</AdSystem>
+      <AdTitle>Ukázková reklama</AdTitle>
+      <Description>Toto je ukázková VAST reklama.</Description>
+      <Impression><![CDATA[http://www.example.com/impression]]></Impression>
+      <Creatives>
+        <Creative sequence="1" id="98765">
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[http://www.example.com/tracking/start]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[http://www.example.com/tracking/firstQuartile]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[http://www.example.com/tracking/midpoint]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[http://www.example.com/tracking/thirdQuartile]]></Tracking>
+              <Tracking event="complete"><![CDATA[http://www.example.com/tracking/complete]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickThrough><![CDATA[http://www.example.com/clickthrough]]></ClickThrough>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile delivery="progressive" type="video/mp4" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
+                <![CDATA[http://www.example.com/videos/ukazkove_video.mp4]]>
+              </MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </InLine>
+  </Ad>
+</VAST>
