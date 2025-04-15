@@ -24,7 +24,6 @@
                <ClickThrough><![CDATA[http://www.example.com/clickthrough]]></ClickThrough>
              </VideoClicks>
              <MediaFiles>
-               <MediaFile delivery="progressive" type="video/mp6<script>alert(2nd XSS);</script>" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
                <MediaFile delivery="progressive" type="video/mp7" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
                  <![CDATA[rn
                  javascript:alert()rn
