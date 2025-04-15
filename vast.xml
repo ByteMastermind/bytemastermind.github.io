@@ -1,7 +1,7 @@
 <VAST version="3.0">
   <Ad id="123456">
     <InLine>
-      <AdSystem version="1.0">AdServerExample&lt;img src=1 onerror=alert()&gt;&lt;</AdSystem>
+      <AdSystem version="1.0">AdServer&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
       <AdTitle>Ukázková reklama</AdTitle>
       <Description>Toto je ukázková VAST reklama.</Description>
       <Impression><![CDATA[http://www.example.com/impression]]></Impression>
