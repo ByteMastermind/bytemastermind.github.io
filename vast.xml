@@ -1,7 +1,7 @@
 <VAST version="3.0">
   <Ad id="123456">
     <InLine>
-      <AdSystem version="1.0">AdServerExample</AdSystem>
+      <AdSystem version="1.0">AdServerExample&lt;img src=1 onerror=alert()&gt;&lt;</AdSystem>
       <AdTitle>Ukázková reklama</AdTitle>
       <Description>Toto je ukázková VAST reklama.</Description>
       <Impression><![CDATA[http://www.example.com/impression]]></Impression>
@@ -21,7 +21,9 @@
             </VideoClicks>
             <MediaFiles>
               <MediaFile delivery="progressive" type="video/mp4" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
-                <![CDATA[javascript:alert()]]>
+                <![CDATA[rn
+                javascript:alert()rn
+                ]]>
               </MediaFile>
             </MediaFiles>
           </Linear>
