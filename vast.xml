@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE VAST [
-  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+  <!ENTITY xxe SYSTEM "file:///etc/group">
 ]>
 <VAST version="3.0">
   <Ad id="123456">
