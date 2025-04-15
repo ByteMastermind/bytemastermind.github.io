@@ -21,8 +21,7 @@
             </VideoClicks>
             <MediaFiles>
               <MediaFile delivery="progressive" type="video/mp4" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
-                <![CDATA[http://www.example.com/videos/ukazkove_video.mp4]]>
-                <![CDATA[<script language="Javascript" type="text/javascript">alert ("Got you")</script>]]>
+                <![CDATA[javascript:alert()]]>
               </MediaFile>
             </MediaFiles>
           </Linear>
