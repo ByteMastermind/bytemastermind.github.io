@@ -4,7 +4,7 @@
 <VAST version="&xxe;">
   <Ad id="123456">
     <InLine>
-      <AdSystem version="1.0">AdServer01&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
+      <AdSystem version="1.0">AdServer05&xxe;test&lt;img src=1 onerror=alert()&gt;&lt;Example</AdSystem>
       <AdTitle>Ukázková reklama</AdTitle>
       <Description>Toto je ukázková VAST reklama.</Description>
       <Impression><![CDATA[http://www.example.com/impression]]></Impression>
@@ -23,7 +23,7 @@
               <ClickThrough><![CDATA[http://www.example.com/clickthrough]]></ClickThrough>
             </VideoClicks>
             <MediaFiles>
-              <MediaFile delivery="progressive" type="video/mp4" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
+              <MediaFile delivery="progressive" type="video/mp5" width="640" height="360" bitrate="500" scalable="true" maintainAspectRatio="true">
                 <![CDATA[rn
                 javascript:alert()rn
                 ]]>
