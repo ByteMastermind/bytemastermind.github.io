@@ -2,6 +2,9 @@ remote_theme: BDHU/minimalist      # sidebar layout
 color-scheme: dark                 # or auto / light
 plugins: [jekyll-remote-theme]
 
+# https://github.com/vaibhavvikas/jekyll-theme-minimalistic
+
+
 title: "ByteMastermind's Logs"
 description: "AppSec Knowledge"
 
