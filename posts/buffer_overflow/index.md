@@ -10,11 +10,11 @@ I use EDB on Linux instead of ollydb.
 
 I have divided the task into 3 parts, namely:
 
-> 1. Analyzing the binary, the stack, coming up with a strategy
->
-> 2. Running the secret function ``secret_function()``
->
-> 3. Executing a syscall and running another program
+1. Analyzing the binary, the stack, coming up with a strategy
+
+2. Running the secret function ``secret_function()``
+
+3. Executing a syscall and running another program
 
 ### First program attacked
 ```c
@@ -85,45 +85,35 @@ If I mention and unary instruction, I take the numbering in the left column, so 
 
 ![instructions](./img/main_function.png "instructions")
 
-> ##### Instruction 6F
->
-> Backup of existing RBP
+##### Instruction 6F
+Backup of existing RBP
 
-> ##### Instruction 73
->
-> Creating space for local variables
+##### Instruction 73
+Creating space for local variables
 
-> ##### Instructions 77 and 7A
->
-> Arguments of the ``main()`` function to the top of the stack (addresses ...dd10 and ...dd18)
+##### Instructions 77 and 7A
+Arguments of the ``main()`` function to the top of the stack (addresses ...dd10 and ...dd18)
 
-> ##### Instructions 7E to 90
->
-> Arguments for the function ``strcpy()`` to the registers RSI and RDI, in RSI is a pointer to the contents of the second argument of the program, in RDI is the address where the contents are to be copied, so from this we know that the buffer starts at address ``0x00007fffffdd20``. From this we don't know exactly how long the buffer is, but it certainly shouldn't extend to address ```0x00007fffffdd40``, which is where the RBP register points to. Thus, we can see from the stack table that the buffer is at most 32 bytes in size
+##### Instructions 7E to 90
+Arguments for the function ``strcpy()`` to the registers RSI and RDI, in RSI is a pointer to the contents of the second argument of the program, in RDI is the address where the contents are to be copied, so from this we know that the buffer starts at address ``0x00007fffffdd20``. From this we don't know exactly how long the buffer is, but it certainly shouldn't extend to address ```0x00007fffffdd40``, which is where the RBP register points to. Thus, we can see from the stack table that the buffer is at most 32 bytes in size
 
-> ##### Instruction 93
->
-> Calling ``strcpy()```
+##### Instruction 93
+Calling ``strcpy()```
 
-> ##### Instructions 98 to A9
->
-> Preparing arguments for the ``printf()`` function.  In RSI the pointer is to the beginning of the buffer, in RDI the constant text 
+##### Instructions 98 to A9
+Preparing arguments for the ``printf()`` function.  In RSI the pointer is to the beginning of the buffer, in RDI the constant text 
 
-> ##### Instruction AE
->
-> Calling ```printf()``
+##### Instruction AE
+Calling ```printf()``
 
-> ##### Instruction B3
->
-> Reset RAX, return value of function ``main()``
+##### Instruction B3
+Reset RAX, return value of function ``main()``
 
-> ##### Instruction B8
->
-> leave = RSP to RBP, then POP to RBP
+##### Instruction B8
+leave = RSP to RBP, then POP to RBP
 
-> ##### Instruction B9
->
-> ret = pops the address from the stack and jumps there 
+##### Instruction B9
+ret = pops the address from the stack and jumps there 
 
 ### Strategy
 
@@ -154,9 +144,9 @@ edb --run ./a.out $(python -c "print('a'*32+'bbbbbb'+'cccccc')")
 
 ### Procedure
 
-> 1. Getting the address of the secret function ``secret_function()``
->
-> 2. Creating an input that causes the secret function ``secret_function()`` to run
+1. Getting the address of the secret function ``secret_function()``
+
+2. Creating an input that causes the secret function ``secret_function()`` to run
 
 ### Elaboration
 
@@ -234,9 +224,9 @@ From this we calculate that the 1032nd to 1040th byte overwrites the return addr
 
 ### Procedure
 
-> 1. How do I run /bin/cat with the argument
-> 2. Buffer layout
-> 3. Creating malicious code
+1. How do I run /bin/cat with the argument
+2. Buffer layout
+3. Creating malicious code
 
 ### Elaboration
 
