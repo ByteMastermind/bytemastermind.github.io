@@ -10,7 +10,6 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7922059326480073"
      crossorigin="anonymous"></script>
 
-Helloworld
+# Posts
 
-[bugger](./posts/buffer_overflow/index.md)
-[sdf](./posts/aib/index.md)
+- 09/07/25 [Scraping Instagram Followers In 2025](./posts/ig_scraping/index.md)
