@@ -7,6 +7,8 @@
 
   gtag('config', 'G-5GN8JJ51EE');
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7922059326480073"
+     crossorigin="anonymous"></script>
 
 Helloworld
 
