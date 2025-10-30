@@ -1,0 +1,47 @@
+baseURL = "https://example.com"
+languageCode = "en-us"
+title = "bytemastermind's blog"
+theme="archie"
+copyright = "© bytemastermind"
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+[params]
+	mode="light"
+	useCDN=false
+	subtitle = ""
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/ByteMastermind"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://x.com/MIKE_rowaveOven"
+
+[[params.social]]
+name = "LinkedId"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/imichalbenes/"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
