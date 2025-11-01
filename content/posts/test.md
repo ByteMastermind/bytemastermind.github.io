@@ -1,7 +1,7 @@
 ---
 title: Title of the post
 description:
-date:
+date: "2025-11-01"
 tldr: this is tldr
 draft: true
 tags: [tag] 
@@ -14,4 +14,4 @@ toc: true
 
 ```
 another test
-```
+````
