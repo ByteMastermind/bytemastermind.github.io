@@ -171,3 +171,16 @@ table tr:nth-child(even) {
 .callout-custom {
   color: var(--color-text-dark, #ffffff);
 }
+
+/* Copy button in dark mode */
+.copy-code-button {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.copy-code-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.copy-code-button.copied {
+  background-color: #50fa7b;
+}
