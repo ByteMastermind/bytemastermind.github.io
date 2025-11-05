@@ -1,7 +1,7 @@
 /* Dark theme overrides */
 body {
   color: var(--color-text-dark, #ffffff);
-  background-color: var(--color-background-dark, #202124);
+  background-color: #212121;
 }
 
 ::-moz-selection {
@@ -26,8 +26,12 @@ code {
 }
 
 pre {
-  background-color: var(--color-background-pre-dark, #272822);
-  border-color: var(--color-border-dark, #0066ff);
+  background-color: #171717;
+  border: none;
+}
+
+pre[style] {
+  background-color: #171717 !important;
 }
 
 blockquote {
@@ -53,7 +57,7 @@ h5::before { color: var(--color-primary-dark, #50fa7b); }
 h6::before { color: var(--color-primary-dark, #50fa7b); }
 
 .toc {
-  background-color: var(--color-background-toc-dark, #272822);
+  background-color: #171717;
   color: var(--color-text-dark, #ffffff);
   border-color: var(--color-border-dark, #0066ff);
 }
@@ -101,10 +105,6 @@ footer {
   border-color: var(--color-border-dark, #0066ff);
 }
 
-.highlight {
-  background-color: var(--color-background-pre-dark, #272822);
-}
-
 .soc:hover,
 .soc:focus {
   color: var(--color-primary-dark, #50fa7b);
@@ -117,7 +117,7 @@ footer {
 
 /* Tables in dark mode */
 table th {
-  background-color: var(--color-background-pre-dark, #272822);
+  background-color: #171717;
   color: var(--color-text-dark, #ffffff);
   border-color: var(--color-border-dark, #0066ff);
 }
@@ -146,7 +146,7 @@ table tr:nth-child(even) {
 
 /* Callouts in dark mode */
 .callout {
-  background-color: var(--color-background-pre-dark, #272822);
+  background-color: #171717;
   color: var(--color-text-dark, #ffffff);
 }
 
