@@ -10,7 +10,7 @@ pygmentscodefencesguesssyntax = true
 	mode="toggle"
 	useCDN=false
 	subtitle = ""
-    mathjax = true # enable MathJax suppor
+    mathjax = true # enable MathJax support
 	katex = true # enable KaTeX support
 
 [[params.social]]
