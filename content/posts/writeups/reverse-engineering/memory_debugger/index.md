@@ -178,7 +178,7 @@ BOOL WINAPI VirtualProtect (
   PAGE_READWRITE,       // read or write?
   (PDWORD)&dwOldProtect // the old PAGE_READWRITE
 );
-	```
+```
 
 Pointers to the first and last descriptor can be retrieved:
 ```c
