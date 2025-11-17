@@ -6,7 +6,7 @@ date: "2025-11-17"
 tldr: Building a memory debugger involves substituting memory functions such as malloc or free with our solution, which keeps track of allocated and freed memory while still calling the original function. This is achieved by changing the pointers to the functions in the Import Address Table to point to the substitutes. These notes summarize the complex structure of the Portable Executable (PE) file format, its headers, and the mechanisms used for dependency resolution and runtime manipulation (hooking).
 draft: false
 tags: [c,win,memory,executable,reverse-engineering] 
-toc: false
+toc: true
 ---
 
 # How Can It Be Helpful
