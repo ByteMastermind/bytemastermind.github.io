@@ -22,7 +22,9 @@ This classic scheme is very slow and is not much used in practice. Instead, the 
 The key idea is to use the Chinese Remainder Theorem to compute 
 
 $$
-s_{1} \equiv h^{d_{p}}\ mod\ p \\
+s_{1} \equiv h^{d_{p}}\ mod\ p
+$$
+$$
 s_{2} \equiv h^{d_{q}}\ mod\ q
 $$
 
@@ -37,12 +39,16 @@ The CRT is crucial for further explanation of the attack, so let's define it.
 Consider a system of linear congruences
 
 $$
-\begin{aligned}
-x &\equiv a_1 \pmod{m_1} \\
-x &\equiv a_2 \pmod{m_2} \\
-&\vdots \\
-x &\equiv a_N \pmod{m_N}
-\end{aligned}
+x \equiv a_1 \pmod{m_1}
+$$
+$$
+x \equiv a_2 \pmod{m_2}
+$$
+$$
+\vdots
+$$
+$$
+x \equiv a_N \pmod{m_N}
 $$
 
 where $m_1, m_2, \dots, m_N \ge 2$ are pairwise coprime, i.e., $\gcd(m_i, m_j) = 1$ for all $i \neq j$.
@@ -71,7 +77,9 @@ When a fault occurs while computing the $s_1$ or $s_2$ values, it can be smartly
 Suppose that we have a correct signature $s$ that has been derived from:
 
 $$
-s_1 \equiv h^{d_p}\ mod\ p \\
+s_1 \equiv h^{d_p}\ mod\ p
+$$
+$$
 s_2 \equiv h^{d_q}\ mod\ q
 $$
 
@@ -79,13 +87,17 @@ So using the CRT steps defined above, we get a value of $s$ modulo $n$:
 
 1.
 $$
-M_1 = \frac{n}{p} = q \\
+M_1 = \frac{n}{p} = q
+$$
+$$
 M_2 = \frac{n}{q} = p
 $$
 
 2.
 $$
-X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p \\
+X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p
+$$
+$$
 X_2 \equiv M_2^{-1}\ mod\ q \equiv p^{-1}\ mod\ q
 $$
 
@@ -97,7 +109,9 @@ $$
 And suppose that we have a faulty signature $f$ that has been derived from:
 
 $$
-f_1 \equiv h^{d_p}\ mod\ p \\
+f_1 \equiv h^{d_p}\ mod\ p
+$$
+$$
 f_2 \equiv h^{d_q}\ mod\ q
 $$
 
@@ -105,13 +119,17 @@ And again using the CRT, we get a value of $f$ modulo $n$:
 
 1.
 $$
-M_1 = \frac{n}{p} = q \\
+M_1 = \frac{n}{p} = q
+$$
+$$
 M_2 = \frac{n}{q} = p
 $$
 
 2.
 $$
-X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p \\
+X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p
+$$
+$$
 X_2 \equiv M_2^{-1}\ mod\ q \equiv p^{-1}\ mod\ q
 $$
 
@@ -123,7 +141,9 @@ $$
 Let's say that the faulty computation appeared in the computation of $f_2$:
 
 $$
-f_1 \equiv h^{d_p}\ mod\ p \\
+f_1 \equiv h^{d_p}\ mod\ p
+$$
+$$
 f_2 \not\equiv h^{d_q}\ mod\ q
 $$
 
