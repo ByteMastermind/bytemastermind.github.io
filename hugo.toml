@@ -6,6 +6,7 @@ copyright = "© bytemastermind"
 pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
+enableRobotsTXT = true
 [params]
 	mode="toggle"
 	useCDN=false
