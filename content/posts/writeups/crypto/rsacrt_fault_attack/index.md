@@ -61,7 +61,7 @@ $$
 
 ---
 
-This can be practically be used in the following way:
+This can practically be used in the following way:
 
 1. For each $i \in \{1, 2, \dots, N\}$ define $M_i := \frac{M}{m_i}$
 2. Compute $X_i$ such that $M_i X_i \equiv 1 \pmod{m_i}$, thus finding an inverse of $M_i$ in modulo $m_i$
