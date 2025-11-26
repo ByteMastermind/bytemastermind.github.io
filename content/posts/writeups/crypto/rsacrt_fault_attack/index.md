@@ -141,10 +141,7 @@ $$
 Let's say that the faulty computation appeared in the computation of $f_2$:
 
 $$
-f_1 \equiv h^{d_p}\ mod\ p
-$$
-$$
-f_2 \not \equiv h^{d_q}\ mod\ q
+f_2 \equiv h^{d_q}\ mod\ q
 $$
 
 If we compute $s - f$, we get:
@@ -153,7 +150,7 @@ $$
 s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - f_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
 $$
 
-We know that $f_1 \equiv s_1 \pmod p$, however $f_2 \not \equiv s_2 \pmod q$. We use this to our advantage and substitute $f_1$ with $s_1$.
+We know that $f_1 \equiv s_1 \pmod p$, but equation $f_2 \equiv s_2 \pmod q$ is not true. We use this to our advantage and substitute $f_1$ with $s_1$.
 
 $$
 s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - s_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
