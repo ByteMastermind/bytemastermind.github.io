@@ -172,9 +172,9 @@ $$
 
 We came to a very interesting state, where we know from that equation that $s_2 - f_2$ is a multiple of $p$, can write $s_2 - f_2 \equiv 0 \pmod p$ or maybe even better $s_2 - f_2 = p \cdot k$ for some integer $k$.
 
-This is the light bulb moment, when we can realise, that we are actually holding a $k$ multiple of $p$ in our hands. And we can know for sure, that $p$ is a divisor of $n$.
+This is the light bulb moment - holding a $k$ multiple of $p$ in our hands. We can know from definiton that $p$ is a divisor of $n$.
 
-We can pretty easily compute (using Euclid's algorithm, note that computing GCD is a very fast routine operation, factoring is the hard part):
+Then we can pretty easily compute the $p$ (using Euclid's algorithm, note that computing GCD is a very fast routine operation, factoring is the hard part):
 
 $$
 gcd(s - f, n) = gcd(p \cdot k, n) = p
