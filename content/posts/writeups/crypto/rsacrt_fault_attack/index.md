@@ -11,7 +11,7 @@ toc: false
 
 Let's start with the classic RSA signature scheme.
 
-Suppose Alice wishes to send a signed message $m$ to Bob. She produces a hash value $h = hash(m)$ of the message $m$, raises it to the power of $d$ (modulo $n$), and attaches $s = h^d\ mod\ n$ as a "signature" to the message.
+Suppose Alice wishes to send a signed message $m$ to Bob. She produces a hash value $h = hash(m)$ of the message $m$, raises it to the power of $d$ (modulo $n$), and attaches $s = h^d \mod n$ as a "signature" to the message.
 
 The $n$ is the product of two large prime numbers $p$ and $q$. The $d$ is the private key, which is the modular multiplicative inverse of $e$ modulo $\phi(n) = (p-1)(q-1)$.
 
@@ -22,13 +22,13 @@ This classic scheme is very slow and is not much used in practice. Instead, the 
 The key idea is to use the Chinese Remainder Theorem to compute 
 
 $$
-s_{1} \equiv h^{d_{p}}\ \pmod{p-1}
+s_{1} \equiv h^{d_{p}} \mod p
 $$
 $$
-s_{2} \equiv h^{d_{q}}\ \pmod{q-1}
+s_{2} \equiv h^{d_{q}} \mod q
 $$
 
-where $d_{p} = d\ mod\ p$ and $d_{q} = d\ mod\ q$.
+where $d_{p} = d \mod (p-1)$ and $d_{q} = d \mod (q-1)$.
 
 Then the Chinese Remainder Theorem is used to combine them to get $s$ modulo $n$.
 
@@ -39,16 +39,16 @@ The CRT is crucial for further explanation of the attack, so let's define it.
 Consider a system of linear congruences
 
 $$
-x \equiv a_1 \pmod{m_1}
+x \equiv a_{1} \mod m_{1}
 $$
 $$
-x \equiv a_2 \pmod{m_2}
+x \equiv a_{2} \mod m_{2}
 $$
 $$
 \vdots
 $$
 $$
-x \equiv a_N \pmod{m_N}
+x \equiv a_{N} \mod m_{N}
 $$
 
 where $m_1, m_2, \dots, m_N \ge 2$ are pairwise coprime, i.e., $\gcd(m_i, m_j) = 1$ for all $i \neq j$.
@@ -64,10 +64,10 @@ $$
 This can practically be used in the following way:
 
 1. For each $i \in \{1, 2, \dots, N\}$ define $M_i := \frac{M}{m_i}$
-2. Compute $X_i$ such that $M_i X_i \equiv 1 \pmod{m_i}$, thus finding an inverse of $M_i$ in modulo $m_i$
+2. Compute $X_i$ such that $M_i X_i \equiv 1 \mod m_i$, thus finding an inverse of $M_i$ in modulo $m_i$
 3. We claim that the solution to the given system is
 $$
-x \equiv \sum_{i=1}^{N} a_i M_i X_i \pmod M
+x \equiv \sum_{i=1}^{N} a_i M_i X_i \mod M
 $$
 
 # When Fault is Introduced
@@ -77,10 +77,10 @@ When a fault occurs while computing the $s_1$ or $s_2$ values, it can be smartly
 Suppose that we have a correct signature $s$ that has been derived from:
 
 $$
-s_1 \equiv h^{d_p}\ mod\ p
+s_1 \equiv h^{d_p} \mod p
 $$
 $$
-s_2 \equiv h^{d_q}\ mod\ q
+s_2 \equiv h^{d_q} \mod q
 $$
 
 So using the CRT steps defined above, we get a value of $s$ modulo $n$:
@@ -95,24 +95,24 @@ $$
 
 2.
 $$
-X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p
+X_1 \equiv M_1^{-1} \mod p \equiv q^{-1} \mod p
 $$
 $$
-X_2 \equiv M_2^{-1}\ mod\ q \equiv p^{-1}\ mod\ q
+X_2 \equiv M_2^{-1} \mod q \equiv p^{-1} \mod q
 $$
 
 3.
 $$
-s \equiv \sum_{i=1}^{N} a_i M_i X_i \pmod M \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
+s \equiv \sum_{i=1}^{N} a_i M_i X_i \mod n \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
 And suppose that we have a faulty signature $f$ that has been derived from:
 
 $$
-f_1 \equiv h^{d_p}\ mod\ p
+f_1 \equiv h^{d_p} \mod p
 $$
 $$
-f_2 \equiv h^{d_q}\ mod\ q
+f_2 \equiv h^{d_q} \mod q
 $$
 
 And again using the CRT, we get a value of $f$ modulo $n$:
@@ -127,50 +127,50 @@ $$
 
 2.
 $$
-X_1 \equiv M_1^{-1}\ mod\ p \equiv q^{-1}\ mod\ p
+X_1 \equiv M_1^{-1} \mod p \equiv q^{-1} \mod p
 $$
 $$
-X_2 \equiv M_2^{-1}\ mod\ q \equiv p^{-1}\ mod\ q
+X_2 \equiv M_2^{-1} \mod q \equiv p^{-1} \mod q
 $$
 
 3.
 $$
-f \equiv \sum_{i=1}^{N} a_i M_i X_i \pmod M \equiv f_1 \cdot (q^{-1} \mod p) \cdot q + f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
+f \equiv \sum_{i=1}^{N} a_i M_i X_i \mod n \equiv f_1 \cdot (q^{-1} \mod p) \cdot q + f_2 \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
 Let's say that the faulty computation appeared in the computation of $f_2$:
 
 $$
-f_2 \equiv h^{d_q}\ mod\ q
+f_2 \equiv h^{d_q} \mod q
 $$
 
 If we compute $s - f$, we get:
 
 $$
-s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - f_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
+s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - f_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
-We know that $f_1 \equiv s_1 \pmod p$, but equation $f_2 \equiv s_2 \pmod q$ is not true. We use this to our advantage and substitute $f_1$ with $s_1$.
+We know that $f_1 \equiv s_1 \mod p$, but equation $f_2 \equiv s_2 \mod q$ is not true. We use this to our advantage and substitute $f_1$ with $s_1$.
 
 $$
-s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - s_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
+s - f \equiv s_1 \cdot (q^{-1} \mod p) \cdot q + s_2 \cdot (p^{-1} \mod q) \cdot p - s_1 \cdot (q^{-1} \mod p) \cdot q - f_2 \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
 After simplification, we get:
 
 $$
-s - f \equiv s_2 \cdot (p^{-1} \mod q) \cdot p - f_2 \cdot (p^{-1} \mod q) \cdot p \pmod n
+s - f \equiv s_2 \cdot (p^{-1} \mod q) \cdot p - f_2 \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
 And then:
 
 $$
-s - f \equiv (s_2 - f_2) \cdot (p^{-1} \mod q) \cdot p \pmod n
+s - f \equiv (s_2 - f_2) \cdot (p^{-1} \mod q) \cdot p \mod n
 $$
 
 ## Light Bulb Moment
 
-We came to a very interesting state, where we know from that equation that $s - f$ is a multiple of $p$. We can write $s - f \equiv 0 \pmod p$ or maybe even better $s - f = p \cdot k$ for some integer $k$.
+We came to a very interesting state, where we know from that equation that $s - f$ is a multiple of $p$. We can write $s - f \equiv 0 \mod p$ or maybe even better $s - f = p \cdot k$ for some integer $k$.
 
 This is the light bulb moment - holding a $k$ multiple of $p$ in our hands. We can know from definiton that $p$ is a divisor of $n$.
 
