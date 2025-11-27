@@ -170,7 +170,7 @@ $$
 
 ## Light Bulb Moment
 
-We came to a very interesting state, where we know from that equation that $s - f$ is a multiple of $p$. We can write $s - f \equiv 0 \mod p$ or maybe even better $s - f = p \cdot k$ for some integer $k$.
+We came to a very interesting state, where we know from that equation that $s - f$ is a multiple of $p$ (or analogously $q$). We can write $s - f \equiv 0 \mod p$ or maybe even better $s - f = p \cdot k$ for some integer $k$.
 
 This is the light bulb moment - holding a $k$ multiple of $p$ in our hands. We can know from definiton that $p$ is a divisor of $n$.
 
