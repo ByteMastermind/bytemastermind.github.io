@@ -22,10 +22,10 @@ This classic scheme is very slow and is not much used in practice. Instead, the 
 The key idea is to use the Chinese Remainder Theorem to compute 
 
 $$
-s_{1} \equiv h^{d_{p}}\ mod\ p
+s_{1} \equiv h^{d_{p}}\ \pmod{p-1}
 $$
 $$
-s_{2} \equiv h^{d_{q}}\ mod\ q
+s_{2} \equiv h^{d_{q}}\ \pmod{q-1}
 $$
 
 where $d_{p} = d\ mod\ p$ and $d_{q} = d\ mod\ q$.
