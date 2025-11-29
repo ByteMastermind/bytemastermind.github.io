@@ -910,4 +910,34 @@ nav {
     max-height: 550px;
     max-block-size: 550px;
   }
+
+  /* Increased spacing by 50% */
+  p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    margin-block: 0.75em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 3em;
+    margin-bottom: 0.75em;
+    margin-block-start: 3em;
+    margin-block-end: 0.75em;
+  }
+
+  pre,
+  .katex-display,
+  .tldr,
+  .callout,
+  hr,
+  table {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-block: 1.5em;
+  }
 }
