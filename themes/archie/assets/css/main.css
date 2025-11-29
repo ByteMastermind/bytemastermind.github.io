@@ -48,6 +48,8 @@ html {
   font-size: var(--font-size-base, 15px);
   line-height: var(--line-height-base, 1.6);
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -236,6 +238,8 @@ code {
   padding: 0.1em 0.2em;
   border-radius: 3px;
   font-size: 0.9em;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 pre {
@@ -244,7 +248,8 @@ pre {
   overflow-x: auto;
   padding: 1em;
   border-radius: var(--border-radius, 5px);
-  border: 1px solid var(--color-border, #663399);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .highlight pre ::selection {
