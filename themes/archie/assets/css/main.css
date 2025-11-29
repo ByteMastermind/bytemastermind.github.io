@@ -259,6 +259,13 @@ pre code {
   padding: 0;
 }
 
+/* Math blocks */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
 /* Layout containers */
 .content {
   /* Fallback for older browsers */
