@@ -9,9 +9,13 @@ toc: false
 ---
 
 **CTF:** Hack.lu CTF 2025
+
 **Challenge created by**: `pspaul`
+
 **Category:** Web
+
 **Points:** 121
+
 **Goal:** Shop all the hacker things!
 
 ## First Look
