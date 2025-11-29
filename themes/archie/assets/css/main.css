@@ -809,12 +809,16 @@ nav {
 
 /* Media queries for responsive design */
 @media (max-width: 37.4em) {
+  :root {
+    --font-size-base: 17px;
+  }
+
   .content {
     /* Fallback for older browsers */
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     /* Modern logical properties */
-    padding-inline: 0.5rem;
+    padding-inline: 1rem;
   }
   
   header {
