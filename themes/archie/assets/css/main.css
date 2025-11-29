@@ -484,6 +484,23 @@ article .title {
 }
 
 
+/* TL;DR */
+.tldr {
+  background-color: var(--color-background-toc, #ececec);
+  padding: 1em;
+  border-radius: var(--border-radius, 5px);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-block: 1em;
+  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.tldr-label {
+  display: block;
+  color: var(--color-primary, #dc143c);
+  margin-bottom: 0.5em;
+}
+
 /* Callouts */
 .callout {
   background-color: var(--color-callout, #1e90ff);
