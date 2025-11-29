@@ -898,3 +898,16 @@ nav {
     align-items: flex-start;
   }
 }
+
+/* Desktop sizing adjustments */
+@media screen and (min-width: 60em) {
+  :root {
+    --font-size-base: 16.5px;
+    --content-max-width: 880px;
+  }
+
+  figure img {
+    max-height: 550px;
+    max-block-size: 550px;
+  }
+}
