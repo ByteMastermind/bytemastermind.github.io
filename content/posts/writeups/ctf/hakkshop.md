@@ -142,7 +142,7 @@ There is not much that we are able to do as logged in user. We can only delete o
 
 Observing the source code handling the deletion of an account, we see that the function before deletion grants the user session temporary `users_delete` and `perms_delete` permissions. After delete, the permissions are deleted.
 
-We can however terminate the function right after granting our session the permissions. That would leave the permissions for our session permanent. The termination can be done by passing parameter `msg` as an array and not a string. That will cause en error in that part of code before invalidating the delete permissions.
+We can however terminate the function right after granting our session the permissions and deleting the account. That would leave the permissions for our session permanent, because the program never gets to delete the delete permissions and it **never gets to delete the session** neither (important, remember). The termination can be done by passing parameter `msg` as an array and not a string. That will cause en error in that part of code before invalidating the delete permissions. Note that 
 
 ```http
 POST /settings.php?uid=2&msg[]=x HTTP/1.1
@@ -174,7 +174,7 @@ delete-user=1
 
 ## New User ID 1
 
-Now when we register a new user, his ID will be the lowest available = 1. We will also obtain a valid session for user ID 1. That could be useful if the session handling is flawed.
+Now when we register a new user, his ID will be the lowest available = 1. That is because now that ID=1 is not associated with any user after we deleted the administrator user with ID=1 and our user `mike` is also deleted, leaving no user in the user table. We will obtain a valid session for user ID=1 when we log in to the new registered user. That is important for later exploit, because as I mentioned earlier, when deleting an account, its session never gets invalidated.
 
 ```http
 POST /login.php HTTP/1.1
@@ -185,11 +185,11 @@ Content-Type: application/x-www-form-urlencoded
 username=fill&password=pass
 ```
 
-We can delete that account of ID 1 and save the session for later.  
-
 ## Admin Recreation
 
-Let's use the `install.php` script and test, if the session handling is flawed, more specifically, can we log in as just created administrator using the session we created for now deleted account which ID was also 1?
+So now we have an user `fill` with ID=1 and session associated with the ID. What if we delete the `fill` user and run the `install.php` script? That would create the admin user again on the lowest available ID -> 1 and that would mean we have a valid session for that user ID=1! (because that `fill`s session never got deleted).  
+
+Let's use the `install.php` script and test, if the session handling is flawed as I described, more specifically, can we log in as just created administrator using the session we created for now deleted account which ID was also 1?
 
 ```http
 GET /install.php HTTP/1.1
