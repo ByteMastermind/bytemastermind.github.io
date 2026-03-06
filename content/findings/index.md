@@ -8,6 +8,6 @@ author = "bytemastermind"
 
 | Vulnerability | Company | Severity | Bounty | Date |
 |---------------|---------|----------|--------|------|
-| Reflected XSS | mmr.gov.cz | Medium | [€100](https://hckrt.com/Bounty/cc10fc17-0560-4c57-b45a-924b5c868b62) | 27.7.2025 |
-| Stored XSS | [REDACTED] | HIGH | 15 000 Kč | 6.3.2026 |
+| Reflected XSS | mmr.gov.cz | MEDIUM| [€100](https://hckrt.com/Bounty/cc10fc17-0560-4c57-b45a-924b5c868b62) | 27.7.2025 |
+| Stored XSS | [REDACTED] | High | 15 000 Kč | 6.3.2026 |
 
