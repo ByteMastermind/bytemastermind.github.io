@@ -1,7 +1,9 @@
 /* Dark theme overrides */
 body {
-  color: var(--color-text-dark, #ffffff);
-  background-color: #212121;
+  color: var(--color-text-dark, #d7dae0);
+  background-color: var(--color-background-dark, #16181d);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::-moz-selection {
@@ -21,22 +23,31 @@ hr {
 }
 
 code {
-  background-color: var(--color-background-code-dark, #3a3a3a);
-  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-code-dark, #262931);
+  color: #e8eaee;
 }
 
 pre {
-  background-color: #171717;
-  border: none;
+  background-color: var(--color-background-pre-dark, #1d2026);
+  border-color: var(--color-rule-dark, #2c3038);
 }
 
 pre[style] {
-  background-color: #171717 !important;
+  background-color: var(--color-background-pre-dark, #1d2026) !important;
 }
 
 blockquote {
   border-color: var(--color-border-dark, #0066ff);
-  color: var(--color-text-muted-dark, #dddddd);
+  color: var(--color-text-muted-dark, #a3a9b4);
+}
+
+img {
+  border-color: var(--color-rule-dark, #2c3038);
+}
+
+ul>li::before,
+ol>li::marker {
+  color: var(--color-primary-dark, #50fa7b);
 }
 
 /* Headings */
@@ -46,7 +57,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-text-muted-dark, #dddddd);
+  color: var(--color-heading-dark, #f2f4f7);
 }
 
 h1::before {
@@ -74,8 +85,8 @@ h6::before {
 }
 
 .toc {
-  background-color: #171717;
-  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-toc-dark, #1d2026);
+  color: var(--color-text-dark, #d7dae0);
   border-color: var(--color-border-dark, #0066ff);
 }
 
@@ -83,6 +94,11 @@ h6::before {
 a {
   border-block-end: 3px solid var(--color-primary-dark, #50fa7b);
   color: inherit;
+}
+
+.body a {
+  border: 0;
+  text-decoration-color: var(--color-primary-dark, #50fa7b);
 }
 
 a:hover,
@@ -134,18 +150,18 @@ footer {
 
 /* Tables in dark mode */
 table th {
-  background-color: #171717;
-  color: var(--color-text-dark, #ffffff);
-  border-color: var(--color-border-dark, #0066ff);
+  background-color: var(--color-background-pre-dark, #1d2026);
+  color: var(--color-heading-dark, #f2f4f7);
+  border-color: var(--color-rule-dark, #2c3038);
 }
 
 table td {
-  border-color: var(--color-border-dark, #0066ff);
-  color: var(--color-text-dark, #ffffff);
+  border-color: var(--color-rule-dark, #2c3038);
+  color: var(--color-text-dark, #d7dae0);
 }
 
 table tr:nth-child(even) {
-  background-color: var(--color-background-code-dark, #3a3a3a);
+  background-color: var(--color-background-toc-dark, #1d2026);
 }
 
 /* Navigation toggle in dark mode */
@@ -164,8 +180,9 @@ table tr:nth-child(even) {
 
 /* TL;DR in dark mode */
 .tldr {
-  background-color: var(--color-background-toc-dark, #171717);
-  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-toc-dark, #1d2026);
+  border-color: var(--color-primary-dark, #50fa7b);
+  color: var(--color-text-dark, #d7dae0);
 }
 
 .tldr-label {
@@ -174,8 +191,8 @@ table tr:nth-child(even) {
 
 /* Callouts in dark mode */
 .callout {
-  background-color: #171717;
-  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-pre-dark, #1d2026);
+  color: var(--color-text-dark, #d7dae0);
 }
 
 .callout-alert {
