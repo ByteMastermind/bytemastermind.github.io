@@ -14,14 +14,11 @@
 			</div>
 			{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 			{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
-			{{ range $paginator.Pages }}
-			<section class="list-item">
-				<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
-				<time>{{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end
-					}}</time>
-				<br>{{ template "partials/pagedescription.html" . }}
-			</section>
-			{{ end }}
+			<div class="post-grid">
+				{{ range $paginator.Pages }}
+				{{ partial "post-card.html" . }}
+				{{ end }}
+			</div>
 			{{ template "partials/paginator.html" . }}
 		</main>
 		{{ partial "footer.html" . }}

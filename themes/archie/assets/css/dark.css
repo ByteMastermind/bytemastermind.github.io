@@ -189,6 +189,35 @@ table tr:nth-child(even) {
   color: var(--color-primary-dark, #50fa7b);
 }
 
+/* Post cards in dark mode */
+.post-card {
+  background-color: var(--color-background-card-dark, #1b1e24);
+  border-color: var(--color-rule-dark, #2c3038);
+}
+
+.post-card:hover,
+.post-card:focus-within {
+  border-color: var(--color-primary-dark, #50fa7b);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.7);
+}
+
+.post-card-kicker {
+  color: var(--color-primary-dark, #50fa7b);
+}
+
+.post-card-summary {
+  color: var(--color-text-muted-dark, #a3a9b4);
+}
+
+.post-card-tags li {
+  background-color: var(--color-background-code-dark, #262931);
+  color: var(--color-text-dark, #d7dae0);
+}
+
+.post-card-meta {
+  color: #868c97;
+}
+
 /* Callouts in dark mode */
 .callout {
   background-color: var(--color-background-pre-dark, #1d2026);

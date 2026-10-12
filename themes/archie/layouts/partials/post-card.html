@@ -1,0 +1,18 @@
+{{- $category := path.Base (path.Dir (strings.TrimSuffix "/" .RelPermalink)) -}}
+<article class="post-card">
+	{{ if ne $category .Section }}<div class="post-card-kicker">{{ $category }}</div>{{ end }}
+	<h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+	<p class="post-card-summary">{{ .Params.tldr | default .Description | default .Summary | plainify }}</p>
+	<div class="post-card-footer">
+		{{ with .Params.tags }}
+		<ul class="post-card-tags">
+			{{ range first 4 . }}<li>#{{ . }}</li>{{ end }}
+		</ul>
+		{{ end }}
+		<div class="post-card-meta">
+			<time datetime="{{ .Date.Format "2006-01-02" }}">{{ dateFormat ":date_medium" .Date }}</time>
+			<span>{{ .ReadingTime }} min read</span>
+			{{ if .Draft }}<span class="draft-label">DRAFT</span>{{ end }}
+		</div>
+	</div>
+</article>
