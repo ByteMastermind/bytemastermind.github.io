@@ -218,6 +218,10 @@ table tr:nth-child(even) {
   color: #868c97;
 }
 
+.post-card-link {
+  color: var(--color-primary-dark, #50fa7b);
+}
+
 /* Callouts in dark mode */
 .callout {
   background-color: var(--color-background-pre-dark, #1d2026);

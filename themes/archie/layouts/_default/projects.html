@@ -1,0 +1,26 @@
+{{ define "main" }}
+<h1 class="page-title">{{ .Title }}</h1>
+<section class="body">
+	{{ .Content }}
+</section>
+
+<div class="post-grid project-grid">
+	{{ range .Params.projects }}
+	<article class="post-card">
+		<div class="post-card-kicker">{{ .kind }}</div>
+		<h2 class="post-card-title"><a href="{{ .url }}" rel="noopener">{{ .name }}</a></h2>
+		<p class="post-card-summary">{{ .summary }}</p>
+		<div class="post-card-footer">
+			<ul class="post-card-tags">
+				{{ range .tags }}<li>#{{ . }}</li>{{ end }}
+			</ul>
+			<div class="post-card-meta">
+				<span>{{ .language }}</span>
+				<span>{{ .year }}</span>
+				<span class="post-card-link">GitHub ↗</span>
+			</div>
+		</div>
+	</article>
+	{{ end }}
+</div>
+{{ end }}

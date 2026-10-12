@@ -30,13 +30,13 @@ icon = "linkedin"
 url = "https://www.linkedin.com/in/imichalbenes/"
 
 [[menu.main]]
-name = "Home"
+name = "Posts"
 url = "/"
 weight = 1
 
 [[menu.main]]
-name = "All posts"
-url = "/posts"
+name = "Projects"
+url = "/projects"
 weight = 2
 
 [[menu.main]]

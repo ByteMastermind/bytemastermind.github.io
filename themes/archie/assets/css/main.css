@@ -674,6 +674,19 @@ article .title {
   color: inherit;
 }
 
+.post-card-link {
+  margin-inline-start: auto;
+  color: var(--color-primary, #dc143c);
+}
+
+.project-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+}
+
+.project-grid .post-card-summary {
+  display: block;
+}
+
 /* Callouts */
 .callout {
   background-color: var(--color-callout, #1e90ff);
