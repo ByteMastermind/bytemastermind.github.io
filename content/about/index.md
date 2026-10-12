@@ -10,6 +10,10 @@ Hello, I'm Michal Beneš, an AppSec engineer, penetration tester and computer se
 
 This blog is mainly intended for note-taking purposes and for sharing the things I have learnt.
 
+## Certifications
+
+- [Burp Suite Certified Practitioner](https://portswigger.net/web-security/e/c/d81d9579ee62988a) (BSCP) by PortSwigger, issued in October 2026
+
 ## Contact
 
 If you are trying to contact me, please use the following email address: `michal.benes10@gmail.com`
