@@ -11,6 +11,7 @@ enableRobotsTXT = true
 	mode="toggle"
 	useCDN=false
 	subtitle = ""
+	description = "Web security blog by bytemastermind - notes, writeups and research"
     mathjax = false # enable MathJax suport
 	katex = true # enable KaTeX support
 
