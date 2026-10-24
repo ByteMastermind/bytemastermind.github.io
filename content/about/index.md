@@ -6,7 +6,7 @@ aliases = ["about-us","contact"]
 author = "bytemastermind"
 +++
 
-Hello, I'm Michal Beneš, an AppSec engineer, penetration tester and computer security master's student at CTU Prague. My area of expertise is web security, and I specialise in identifying and resolving security vulnerabilities.
+Hello World, I'm Michal Beneš, an AppSec engineer, penetration tester and computer security master's student at CTU Prague. My area of expertise is web security, and I specialise in identifying and resolving security vulnerabilities.
 
 This blog is mainly intended for note-taking purposes and for sharing the things I have learnt.
 

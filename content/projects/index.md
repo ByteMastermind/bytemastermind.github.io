@@ -10,11 +10,11 @@ projects:
     tags: [python, rfid, nfc, proxmark]
     language: Python
     year: 2024
-  - name: Dictate
-    kind: Desktop app
-    url: https://github.com/ByteMastermind/Dictate
-    summary: Local push-to-talk dictation for GNOME. Press Super+R, speak, and the speech is transcribed on the CPU with NVIDIA Parakeet TDT, cleaned up and copied to the clipboard. No cloud involved.
-    tags: [python, speech-to-text, gtk4, offline]
+  - name: PipeLLM
+    kind: CLI tool
+    url: https://github.com/ByteMastermind/pipellm
+    summary: Simple CLI tool for building custom LLM agent pipelines. Pipeline jobs and rules are defined in YAML files, similar to CI/CD pipelines. Each job can have its own model, tools, prompts and output format, with conditional branching and repetition.
+    tags: [python, llm, pipeline, cli]
     language: Python
     year: 2026
   - name: Clipboard Manager
