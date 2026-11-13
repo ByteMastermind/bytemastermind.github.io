@@ -10,5 +10,7 @@ author = "bytemastermind"
 |---------------|---------|----------|--------|------|
 | Reflected XSS | mmr.gov.cz | MEDIUM| [€100](https://hckrt.com/Bounty/cc10fc17-0560-4c57-b45a-924b5c868b62) | 27.7.2025 |
 | Stored XSS | [REDACTED] | HIGH | 15 000 Kč | 6.3.2026 |
-| Reflected XSS leading to account takeover | app.scanpay.cz | HIGH | 404 | 28.10.2026 |
+| Flawed Access Control leading to leak of user car photos | [ANYTIME](https://www.anytimecar.cz/) | HIGH | `404` | 21.8.2026 |
+| Reflected XSS leading to account takeover | app.scanpay.cz | HIGH | `404` | 28.10.2026 |
+ 
 
